@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  dbpsql:
+    image: postgres
+    container_name: dbpsql
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=toor
+      - POSTGRES_DB=weather
+    volumes:
+      - ./config_db/init.sql:/docker-entrypoint-initdb.d/init.sql 
+      - data_weather:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+volumes:
+  data_weather:
