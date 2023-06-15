@@ -7,7 +7,7 @@ import time
 from psycopg2 import IntegrityError
 
 class LoadDataBasePSQL:
-    def __connect_postgres_client(self, path_config='./config_db/credentials.ini'):
+    def connect_postgres_client(self, path_config='./config_db/credentials.ini'):
         try:
             config = configparser.ConfigParser()
             config.read(path_config)
@@ -46,7 +46,7 @@ class LoadDataBasePSQL:
 
 
     def load_data_postgresql(self):
-        conn = self.__connect_postgres_client()
+        conn = self.connect_postgres_client()
         try:
             cursor = conn.cursor()
 
