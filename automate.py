@@ -8,7 +8,7 @@ def ejecutar_script():
     while True:
         # Comando para ejecutar el archivo Python
         subprocess.check_call(['python', archivo_python])
-        time.sleep(120)  # 120 segundos = 2 minutos
+        time.sleep(3600)  # 3600 segundos = 1 hora
 
 
 if __name__ == '__main__':
