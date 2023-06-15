@@ -39,13 +39,16 @@ def get_data():
 
 
 def visualization_data():
-    ruta = "./output_files/csv"
-    archivos = os.listdir(ruta)
-    archivos_csv = [archivo for archivo in archivos if archivo.endswith(".csv")]
-    archivos_csv = sorted(archivos_csv)
-    path_csv = './output_files/csv/' + str(archivos_csv[-1])
-    board = GenerateBoardVisualization()
-    board.generate_graph(path_csv)
+    try:
+        ruta = "./output_files/csv"
+        archivos = os.listdir(ruta)
+        archivos_csv = [archivo for archivo in archivos if archivo.endswith(".csv")]
+        archivos_csv = sorted(archivos_csv)
+        path_csv = './output_files/csv/' + str(archivos_csv[-1])
+        board = GenerateBoardVisualization()
+        board.generate_graph(path_csv)
+    except Exception as error:
+        print('ERROR: visualization_data() ' + str(error) + '\n')
 
 
 def main():
