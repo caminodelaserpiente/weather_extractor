@@ -1,4 +1,7 @@
 requests
 lxml
 psycopg2
-
+pandas
+pyarrow
+fastparquet
+plotly
