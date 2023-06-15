@@ -14,8 +14,11 @@
 4. Get up Docker Container<br>
     ```docker-compose up```<br>
 
-4. Use<br>
+5. Use<br>
     ```python3 main.py```
+
+6. Automate<br>
+    ```python3 automate.py```
 
 
 ## Download files 💾
