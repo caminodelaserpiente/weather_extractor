@@ -1,6 +1,9 @@
 import time
+import os
 from extract_data.extract import WeatherDataExtractor
 from load_data.load import LoadDataBasePSQL
+from postgre_get.postgre import GetDataBasePSQL
+from visualization_data.visualization import GenerateBoardVisualization
 
     
 def extract_data():
@@ -27,9 +30,29 @@ def load_data():
     data_loader.move_json_temp()
 
 
+def get_data():
+    path_output = './output_files'
+    conn = LoadDataBasePSQL()
+    conn = conn.connect_postgres_client()
+    data_getter = GetDataBasePSQL()
+    data_getter.cities_data(conn, path_output)
+
+
+def visualization_data():
+    ruta = "./output_files/csv"
+    archivos = os.listdir(ruta)
+    archivos_csv = [archivo for archivo in archivos if archivo.endswith(".csv")]
+    archivos_csv = sorted(archivos_csv)
+    path_csv = './output_files/csv/' + str(archivos_csv[-1])
+    board = GenerateBoardVisualization()
+    board.generate_graph(path_csv)
+
+
 def main():
     extract_data()
     load_data()
+    get_data()
+    visualization_data()
 
 
 if __name__ == '__main__':
